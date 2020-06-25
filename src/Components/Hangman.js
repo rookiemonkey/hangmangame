@@ -66,7 +66,6 @@ class Hangman extends Component {
 
     const { nWrong, answer, mWrong, winner, definition } = this.state;
     const { images, maxWrong } = this.props;
-    console.log('AFTER RENDER: ', this.state)
 
     return (
       <div className='Hangman'>
