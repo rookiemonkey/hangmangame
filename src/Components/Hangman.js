@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import shortid from 'shortid'
 import hangmanImages from '../Helpers/hangmanImages';
+import handleGuessedWord from '../Helpers/handleGuessedWord';
 
 class Hangman extends Component {
   static defaultProps = {
@@ -21,11 +22,7 @@ class Hangman extends Component {
   /** guessedWord: show current-state of word:
     if guessed letters are {a,p,e}, show "app_e" for "apple"
   */
-  guessedWord() {
-    return this.state.answer
-      .split("")
-      .map(ltr => (this.state.guessed.has(ltr) ? ltr : "_"));
-  }
+  guessedWord = () => { return handleGuessedWord(this) }
 
   /** handleGuest: handle a guessed letter:
     - add to guessed letters
@@ -52,6 +49,7 @@ class Hangman extends Component {
   }
 
   render() {
+    console.table(this.state)
     return (
       <div className='Hangman'>
         <h1>Hangman</h1>
