@@ -6,6 +6,7 @@ import randomWord from '../Helpers/words';
 import hangmanImages from '../Helpers/hangmanImages';
 import handleGuessedWord from '../Helpers/handleGuessedWord';
 import handleOnClick from '../Helpers/handleOnClick';
+import handleEvaluation from '../Helpers/handleEvaluation';
 
 class Hangman extends Component {
   static defaultProps = {
@@ -19,7 +20,8 @@ class Hangman extends Component {
       mWrong: this.props.maxWrong,
       nWrong: 0,
       guessed: new Set(),
-      answer: ""
+      answer: "",
+      winner: false
     };
   };
 
@@ -36,12 +38,17 @@ class Hangman extends Component {
     - add to guessed letters
     - if not in answer, increase number-wrong guesses
   */
-  handleGuess = (e) => { handleOnClick(e, this); };
+  handleGuess = (e) => { handleOnClick(e, this); setTimeout(() => { this.evaluateAnswer(); }, 100) };
 
   /**
     generateButtons: return array of letter buttons to render
   */
   generateButtons = () => { return Buttons(this); };
+
+  /**
+    evaluateAnswer: checks the asnwer if letters and no _ anymore
+  */
+  evaluateAnswer = () => { handleEvaluation(); }
 
   /**
     setGameOver: freezes the whole game when reaches the max wrong
@@ -51,12 +58,13 @@ class Hangman extends Component {
   /**
     setNewGame: resets the whole state of the application
   */
-  setNewGame = () => { this.setState({ nWrong: 0, guessed: new Set(), answer: randomWord() }) }
+  setNewGame = () => { this.setState({ nWrong: 0, guessed: new Set(), answer: randomWord(), winner: false }) }
 
   render() {
 
     const { nWrong, answer, mWrong } = this.state;
     const { images, maxWrong } = this.props;
+    console.log(this.state)
 
     return (
       <div className='Hangman'>
@@ -67,9 +75,9 @@ class Hangman extends Component {
 
         <Meta maxWrong={mWrong} numWrong={nWrong} setNewGame={this.setNewGame}/>
 
-        <p className='Hangman-word'>{ nWrong === maxWrong ? answer : this.guessedWord() }</p>
+        <p className='Hangman-word' id='Hangman-word'>{ nWrong === maxWrong ? answer : this.guessedWord() }</p>
 
-        <p className='Hangman-btns'>{ nWrong === maxWrong ? this.setGameOver() : this.generateButtons() }</p>
+        <p className='Hangman-btns' id='Hangman-btns'>{ nWrong === maxWrong ? this.setGameOver() : this.generateButtons() }</p>
 
       </div>
     );

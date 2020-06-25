@@ -11,7 +11,7 @@ const ButtonsDisabled = () => {
         <button
             key={shortid.generate()}
             value={letter}
-            disabled='true'
+            disabled={true}
         >{letter}</button>
     ));
 
