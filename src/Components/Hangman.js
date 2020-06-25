@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Hints from './Hints';
 import Buttons from './Buttons';
 import ButtonPlayAgain from './ButtonPlayAgain';
 import ButtonsDisabled from './ButtonsDisabled';
@@ -63,7 +64,7 @@ class Hangman extends Component {
 
   render() {
 
-    const { nWrong, answer, mWrong, winner } = this.state;
+    const { nWrong, answer, mWrong, winner, definition } = this.state;
     const { images, maxWrong } = this.props;
     console.log('AFTER RENDER: ', this.state)
 
@@ -71,6 +72,8 @@ class Hangman extends Component {
       <div className='Hangman'>
 
         <h1>Hangman</h1>
+
+        <Hints definition={definition} />
 
         <img src={images[nWrong]} alt="Hangman"/>
 
