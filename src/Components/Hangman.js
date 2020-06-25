@@ -23,6 +23,7 @@ class Hangman extends Component {
       nWrong: 0,
       guessed: new Set(),
       answer: "",
+      definition: {},
       winner: false
     };
   };
@@ -64,6 +65,7 @@ class Hangman extends Component {
 
     const { nWrong, answer, mWrong, winner } = this.state;
     const { images, maxWrong } = this.props;
+    console.log('AFTER RENDER: ', this.state)
 
     return (
       <div className='Hangman'>
