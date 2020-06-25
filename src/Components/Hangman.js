@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import shortid from 'shortid'
 import img0 from "../Images/0.jpg";
 import img1 from "../Images/1.jpg";
 import img2 from "../Images/2.jpg";
@@ -45,6 +46,7 @@ class Hangman extends Component {
   generateButtons() {
     return "abcdefghijklmnopqrstuvwxyz".split("").map(ltr => (
       <button
+        key={shortid.generate()}
         value={ltr}
         onClick={this.handleGuess}
         disabled={this.state.guessed.has(ltr)}
@@ -59,7 +61,7 @@ class Hangman extends Component {
     return (
       <div className='Hangman'>
         <h1>Hangman</h1>
-        <img src={this.props.images[this.state.nWrong]} />
+        <img src={this.props.images[this.state.nWrong]} alt="Hangman"/>
         <p className='Hangman-word'>{this.guessedWord()}</p>
         <p className='Hangman-btns'>{this.generateButtons()}</p>
       </div>
