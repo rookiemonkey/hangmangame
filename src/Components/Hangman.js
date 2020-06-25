@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import shortid from 'shortid'
+import Buttons from './Buttons';
 import hangmanImages from '../Helpers/hangmanImages';
 import handleGuessedWord from '../Helpers/handleGuessedWord';
 import handleOnClick from '../Helpers/handleOnClick';
@@ -22,25 +22,18 @@ class Hangman extends Component {
   /** guessedWord: show current-state of word:
     - if guessed letters are {a,p,e}, show "app_e" for "apple"
   */
-  guessedWord = () => { return handleGuessedWord(this) };
+  guessedWord = () => { return handleGuessedWord(this); };
 
   /** handleGuest: handle a guessed letter:
     - add to guessed letters
     - if not in answer, increase number-wrong guesses
   */
-  handleGuess = (e) => { handleOnClick(e, this) };
+  handleGuess = (e) => { handleOnClick(e, this); };
 
-  /** generateButtons: return array of letter buttons to render */
-  generateButtons() {
-    return "abcdefghijklmnopqrstuvwxyz".split("").map(ltr => (
-      <button
-        key={shortid.generate()}
-        value={ltr}
-        onClick={this.handleGuess}
-        disabled={this.state.guessed.has(ltr)}
-      >{ltr}</button>
-    ));
-  }
+  /**
+    generateButtons: return array of letter buttons to render
+  */
+  generateButtons = () => { return Buttons(this); };
 
   render() {
     console.log(this.state)
