@@ -3,8 +3,9 @@ import Buttons from './Buttons';
 import ButtonPlayAgain from './ButtonPlayAgain';
 import ButtonsDisabled from './ButtonsDisabled';
 import Meta from './Meta';
-import randomWord from '../Helpers/words';
-import hangmanImages from '../Helpers/hangmanImages';
+import getRandomWord from '../Helpers/getRandomWord';
+import getHangmanImages from '../Helpers/getHangmanImages';
+import handlePlayAgain from '../Helpers/handlePlayAgain';
 import handleGuessedWord from '../Helpers/handleGuessedWord';
 import handleOnClick from '../Helpers/handleOnClick';
 import handleEvaluation from '../Helpers/handleEvaluation';
@@ -12,7 +13,7 @@ import handleEvaluation from '../Helpers/handleEvaluation';
 class Hangman extends Component {
   static defaultProps = {
     maxWrong: 6,
-    images: hangmanImages()
+    images: getHangmanImages()
   };
 
   constructor(props) {
@@ -26,9 +27,7 @@ class Hangman extends Component {
     };
   };
 
-  componentDidMount() {
-    this.setState({ ...this.state, answer: randomWord() });
-  }
+  componentDidMount() { getRandomWord(this) }
 
   /** guessedWord: show current-state of word:
     - if guessed letters are {a,p,e}, show "app_e" for "apple"
@@ -59,7 +58,7 @@ class Hangman extends Component {
   /**
     setNewGame: resets the whole state of the application
   */
-  setNewGame = () => { this.setState({ nWrong: 0, guessed: new Set(), answer: randomWord(), winner: false }) }
+  setNewGame = () => { this.setState(handlePlayAgain(this)) }
 
   render() {
 

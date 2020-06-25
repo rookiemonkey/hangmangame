@@ -6,8 +6,8 @@ import img4 from "../Images/4.jpg";
 import img5 from "../Images/5.jpg";
 import img6 from "../Images/6.jpg";
 
-const hangmanImages = () => {
+const getHangmanImages = () => {
     return [img0, img1, img2, img3, img4, img5, img6]
 }
 
-export default hangmanImages;
+export default getHangmanImages;

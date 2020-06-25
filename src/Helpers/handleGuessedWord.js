@@ -1,5 +1,7 @@
 const handleGuessedWord = obj => {
 
+    console.log(obj.state)
+
     // convert the answer into an array
     const ans = obj.state.answer.split("");
 
