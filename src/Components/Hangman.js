@@ -49,7 +49,7 @@ class Hangman extends Component {
   render() {
     console.log(this.state)
 
-    const { nWrong } = this.state;
+    const { nWrong, answer } = this.state;
     const { images, maxWrong } = this.props;
 
     this.setGameOver()
@@ -57,7 +57,7 @@ class Hangman extends Component {
       <div className='Hangman'>
         <h1>Hangman</h1>
         <img src={images[nWrong]} alt="Hangman"/>
-        <p className='Hangman-word'>{ nWrong === maxWrong ? null : this.guessedWord() }</p>
+        <p className='Hangman-word'>{ nWrong === maxWrong ? answer : this.guessedWord() }</p>
         <p className='Hangman-btns'>{ nWrong === maxWrong ? this.setGameOver() : this.generateButtons() }</p>
       </div>
     );
