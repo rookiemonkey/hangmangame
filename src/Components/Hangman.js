@@ -48,7 +48,7 @@ class Hangman extends Component {
   /**
     evaluateAnswer: checks the asnwer if letters and no _ anymore
   */
-  evaluateAnswer = () => { handleEvaluation(); }
+  evaluateAnswer = () => { handleEvaluation(this); }
 
   /**
     setGameOver: freezes the whole game when reaches the max wrong
