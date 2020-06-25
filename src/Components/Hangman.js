@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Heart from './Heart';
 import Buttons from './Buttons';
 import ButtonsDisabled from './ButtonsDisabled';
+import Meta from './Meta';
 import randomWord from '../Helpers/words';
 import hangmanImages from '../Helpers/hangmanImages';
 import handleGuessedWord from '../Helpers/handleGuessedWord';
@@ -16,6 +16,7 @@ class Hangman extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      mWrong: this.props.maxWrong,
       nWrong: 0,
       guessed: new Set(),
       answer: ""
@@ -54,30 +55,22 @@ class Hangman extends Component {
 
   render() {
 
-    const { nWrong, answer } = this.state;
+    const { nWrong, answer, mWrong } = this.state;
     const { images, maxWrong } = this.props;
 
-    this.setGameOver()
     return (
       <div className='Hangman'>
+
         <h1>Hangman</h1>
+
         <img src={images[nWrong]} alt="Hangman"/>
-        <div>
-          { nWrong === maxWrong ? null : <h4>Lives</h4> }
-          { nWrong === maxWrong ? null : <Heart lives={maxWrong - nWrong}/> }
-          {
-            nWrong === maxWrong
-              ? (
-                  <button
-                    id="PlayAgain"
-                    onClick={this.setNewGame}
-                  >Play Again</button>
-                )
-              : null
-          }
-        </div>
+
+        <Meta maxWrong={mWrong} numWrong={nWrong} setNewGame={this.setNewGame}/>
+
         <p className='Hangman-word'>{ nWrong === maxWrong ? answer : this.guessedWord() }</p>
+
         <p className='Hangman-btns'>{ nWrong === maxWrong ? this.setGameOver() : this.generateButtons() }</p>
+
       </div>
     );
   }
