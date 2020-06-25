@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Buttons from './Buttons';
+import ButtonsDisabled from './ButtonsDisabled';
 import randomWord from '../Helpers/words';
 import hangmanImages from '../Helpers/hangmanImages';
 import handleGuessedWord from '../Helpers/handleGuessedWord';
@@ -21,7 +22,7 @@ class Hangman extends Component {
   };
 
   componentDidMount() {
-    this.setState({ ...this.state, answer: randomWord() })
+    this.setState({ ...this.state, answer: randomWord() });
   }
 
   /** guessedWord: show current-state of word:
@@ -40,14 +41,24 @@ class Hangman extends Component {
   */
   generateButtons = () => { return Buttons(this); };
 
+  /**
+    setGameOver: freezes the whole game when reaches the max wrong
+  */
+  setGameOver = () => { return ButtonsDisabled(); };
+
   render() {
     console.log(this.state)
+
+    const { nWrong } = this.state;
+    const { images, maxWrong } = this.props;
+
+    this.setGameOver()
     return (
       <div className='Hangman'>
         <h1>Hangman</h1>
-        <img src={this.props.images[this.state.nWrong]} alt="Hangman"/>
-        <p className='Hangman-word'>{this.guessedWord()}</p>
-        <p className='Hangman-btns'>{this.generateButtons()}</p>
+        <img src={images[nWrong]} alt="Hangman"/>
+        <p className='Hangman-word'>{ nWrong === maxWrong ? null : this.guessedWord() }</p>
+        <p className='Hangman-btns'>{ nWrong === maxWrong ? this.setGameOver() : this.generateButtons() }</p>
       </div>
     );
   }
