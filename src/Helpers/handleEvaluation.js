@@ -4,7 +4,7 @@ const handleEvaluation = obj => {
     if (mWrong !== nWrong) {
         const a = document.querySelector('#Hangman-word').innerText;
         const e = a.split('').every(l => { return l !== '_' });
-        console.log(e);
+        if (e) { obj.setState({ ...obj.state, winner: true }) } else { return false }
     } else { return false };
 
 }

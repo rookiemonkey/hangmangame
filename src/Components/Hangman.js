@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Buttons from './Buttons';
+import ButtonPlayAgain from './ButtonPlayAgain';
 import ButtonsDisabled from './ButtonsDisabled';
 import Meta from './Meta';
 import randomWord from '../Helpers/words';
@@ -62,7 +63,7 @@ class Hangman extends Component {
 
   render() {
 
-    const { nWrong, answer, mWrong } = this.state;
+    const { nWrong, answer, mWrong, winner } = this.state;
     const { images, maxWrong } = this.props;
     console.log(this.state)
 
@@ -73,11 +74,11 @@ class Hangman extends Component {
 
         <img src={images[nWrong]} alt="Hangman"/>
 
-        <Meta maxWrong={mWrong} numWrong={nWrong} setNewGame={this.setNewGame}/>
+        { winner ? <ButtonPlayAgain setNewGame={this.setNewGame} /> : <Meta maxWrong={mWrong} numWrong={nWrong} setNewGame={this.setNewGame}/> }
 
         <p className='Hangman-word' id='Hangman-word'>{ nWrong === maxWrong ? answer : this.guessedWord() }</p>
 
-        <p className='Hangman-btns' id='Hangman-btns'>{ nWrong === maxWrong ? this.setGameOver() : this.generateButtons() }</p>
+        <p className='Hangman-btns' id='Hangman-btns'>{ nWrong === maxWrong || winner ? this.setGameOver() : this.generateButtons() }</p>
 
       </div>
     );
