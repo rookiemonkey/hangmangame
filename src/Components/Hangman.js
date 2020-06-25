@@ -72,6 +72,8 @@ class Hangman extends Component {
 
         <img src={images[nWrong]} alt="Hangman"/>
 
+        { winner ? <h2>Correct!</h2> : null }
+
         { winner ? <ButtonPlayAgain setNewGame={this.setNewGame} /> : <Meta maxWrong={mWrong} numWrong={nWrong} setNewGame={this.setNewGame}/> }
 
         <p className='Hangman-word' id='Hangman-word'>{ nWrong === maxWrong ? answer : this.guessedWord() }</p>
