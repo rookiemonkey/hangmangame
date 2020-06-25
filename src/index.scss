@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Coming+Soon");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Coming Soon", cursive;
+}
+
+@import './Styles/app.scss';
+@import './Styles/hangman.scss';
