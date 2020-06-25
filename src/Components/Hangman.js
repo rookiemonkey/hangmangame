@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import shortid from 'shortid'
 import hangmanImages from '../Helpers/hangmanImages';
 import handleGuessedWord from '../Helpers/handleGuessedWord';
+import handleOnClick from '../Helpers/handleOnClick';
 
 class Hangman extends Component {
   static defaultProps = {
@@ -16,25 +17,18 @@ class Hangman extends Component {
       guessed: new Set(),
       answer: "apple"
     };
-    this.handleGuess = this.handleGuess.bind(this);
-  }
+  };
 
   /** guessedWord: show current-state of word:
-    if guessed letters are {a,p,e}, show "app_e" for "apple"
+    - if guessed letters are {a,p,e}, show "app_e" for "apple"
   */
-  guessedWord = () => { return handleGuessedWord(this) }
+  guessedWord = () => { return handleGuessedWord(this) };
 
   /** handleGuest: handle a guessed letter:
     - add to guessed letters
     - if not in answer, increase number-wrong guesses
   */
-  handleGuess(evt) {
-    let ltr = evt.target.value;
-    this.setState(st => ({
-      guessed: st.guessed.add(ltr),
-      nWrong: st.nWrong + (st.answer.includes(ltr) ? 0 : 1)
-    }));
-  }
+  handleGuess = (e) => { handleOnClick(e, this) };
 
   /** generateButtons: return array of letter buttons to render */
   generateButtons() {
@@ -49,7 +43,7 @@ class Hangman extends Component {
   }
 
   render() {
-    console.table(this.state)
+    console.log(this.state)
     return (
       <div className='Hangman'>
         <h1>Hangman</h1>
