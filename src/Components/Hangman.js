@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Buttons from './Buttons';
+import randomWord from '../Helpers/words';
 import hangmanImages from '../Helpers/hangmanImages';
 import handleGuessedWord from '../Helpers/handleGuessedWord';
 import handleOnClick from '../Helpers/handleOnClick';
@@ -15,9 +16,13 @@ class Hangman extends Component {
     this.state = {
       nWrong: 0,
       guessed: new Set(),
-      answer: "apple"
+      answer: ""
     };
   };
+
+  componentDidMount() {
+    this.setState({ ...this.state, answer: randomWord() })
+  }
 
   /** guessedWord: show current-state of word:
     - if guessed letters are {a,p,e}, show "app_e" for "apple"
