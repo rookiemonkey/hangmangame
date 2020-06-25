@@ -47,6 +47,11 @@ class Hangman extends Component {
   */
   setGameOver = () => { return ButtonsDisabled(); };
 
+  /**
+    setNewGame: resets the whole state of the application
+  */
+  setNewGame = () => { this.setState({ nWrong: 0, guessed: new Set(), answer: randomWord() }) }
+
   render() {
 
     const { nWrong, answer } = this.state;
@@ -60,7 +65,16 @@ class Hangman extends Component {
         <div>
           { nWrong === maxWrong ? null : <h4>Lives</h4> }
           { nWrong === maxWrong ? null : <Heart lives={maxWrong - nWrong}/> }
-          { nWrong === maxWrong ? <button>Play Again</button> : null }
+          {
+            nWrong === maxWrong
+              ? (
+                  <button
+                    id="PlayAgain"
+                    onClick={this.setNewGame}
+                  >Play Again</button>
+                )
+              : null
+          }
         </div>
         <p className='Hangman-word'>{ nWrong === maxWrong ? answer : this.guessedWord() }</p>
         <p className='Hangman-btns'>{ nWrong === maxWrong ? this.setGameOver() : this.generateButtons() }</p>
