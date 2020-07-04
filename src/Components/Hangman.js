@@ -76,7 +76,7 @@ class Hangman extends Component {
         </div>
 
 
-        <div>
+        <div style={{ width: '500px' }}>
             <Hints definition={definition} />
 
             { winner ? <h2>Correct!</h2> : null }

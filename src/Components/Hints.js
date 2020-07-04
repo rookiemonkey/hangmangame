@@ -6,7 +6,16 @@ const Hints = props => {
     const { definition, partOfSpeech } = props.definition;
     let defs; if (definition !== undefined) { defs = definition.map(d => { return ( <li key={shortid.generate()}>{d}</li> ) }) }
 
-    if (!partOfSpeech && !definition ) { return null }
+    if (!partOfSpeech && !definition ) {
+        return (
+
+            <div>
+                <p>We apologize. Our sources do not have any available definition for this one</p>
+            </div>
+
+        )
+    }
+
     else {
 
         return (
