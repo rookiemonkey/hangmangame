@@ -70,19 +70,23 @@ class Hangman extends Component {
     return (
       <div className='Hangman'>
 
-        <h1>Hangman</h1>
+        <div>
+            <h1>Hangman</h1>
+            <img src={images[nWrong]} alt="Hangman"/>
+        </div>
 
-        <Hints definition={definition} />
 
-        <img src={images[nWrong]} alt="Hangman"/>
+        <div>
+            <Hints definition={definition} />
 
-        { winner ? <h2>Correct!</h2> : null }
+            { winner ? <h2>Correct!</h2> : null }
 
-        { winner ? <ButtonPlayAgain setNewGame={this.setNewGame} /> : <Meta maxWrong={mWrong} numWrong={nWrong} setNewGame={this.setNewGame}/> }
+            { winner ? <ButtonPlayAgain setNewGame={this.setNewGame} /> : <Meta maxWrong={mWrong} numWrong={nWrong} setNewGame={this.setNewGame}/> }
 
-        <p className='Hangman-word' id='Hangman-word'>{ nWrong === maxWrong ? answer : this.guessedWord() }</p>
+            <p className='Hangman-word' id='Hangman-word'>{ nWrong === maxWrong ? answer : this.guessedWord() }</p>
 
-        <p className='Hangman-btns' id='Hangman-btns'>{ nWrong === maxWrong || winner ? this.setGameOver() : this.generateButtons() }</p>
+            <p className='Hangman-btns' id='Hangman-btns'>{ nWrong === maxWrong || winner ? this.setGameOver() : this.generateButtons() }</p>
+        </div>
 
       </div>
     );
