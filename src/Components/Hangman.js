@@ -25,7 +25,8 @@ class Hangman extends Component {
       guessed: new Set(),
       answer: "",
       definition: {},
-      winner: false
+      winner: false,
+      score: 0
     };
   };
 
@@ -71,21 +72,21 @@ class Hangman extends Component {
       <div className='Hangman'>
 
         <div>
-            <h1>Hangman</h1>
-            <img src={images[nWrong]} alt="Hangman"/>
+          <h1>Hangman</h1>
+          <img src={images[nWrong]} alt="Hangman" />
         </div>
 
-
         <div style={{ width: '500px' }}>
-            <Hints definition={definition} />
+          <Hints definition={definition} />
 
-            { winner ? <h2>Correct!</h2> : null }
+          {winner ? <h2>Correct!</h2> : null}
 
-            { winner ? <ButtonPlayAgain setNewGame={this.setNewGame} /> : <Meta maxWrong={mWrong} numWrong={nWrong} setNewGame={this.setNewGame}/> }
+          <div>SCORE: {this.state.score}</div>
+          {winner ? <ButtonPlayAgain setNewGame={this.setNewGame} /> : <Meta maxWrong={mWrong} numWrong={nWrong} setNewGame={this.setNewGame} />}
 
-            <p className='Hangman-word' id='Hangman-word'>{ nWrong === maxWrong ? answer : this.guessedWord() }</p>
+          <p className='Hangman-word' id='Hangman-word'>{nWrong === maxWrong ? answer : this.guessedWord()}</p>
 
-            <p className='Hangman-btns' id='Hangman-btns'>{ nWrong === maxWrong || winner ? this.setGameOver() : this.generateButtons() }</p>
+          <p className='Hangman-btns' id='Hangman-btns'>{nWrong === maxWrong || winner ? this.setGameOver() : this.generateButtons()}</p>
         </div>
 
       </div>
