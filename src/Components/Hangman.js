@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Submit from './Submit';
 import Hints from './Hints';
 import Buttons from './Buttons';
 import ButtonPlayAgain from './ButtonPlayAgain';
@@ -65,7 +66,7 @@ class Hangman extends Component {
 
   render() {
 
-    const { nWrong, answer, mWrong, winner, definition } = this.state;
+    const { nWrong, answer, mWrong, winner, definition, score } = this.state;
     const { images, maxWrong } = this.props;
 
     return (
@@ -78,6 +79,8 @@ class Hangman extends Component {
 
         <div style={{ width: '500px' }}>
           <Hints definition={definition} />
+
+          <Submit score={score} />
 
           {winner ? <h2>Correct!</h2> : null}
 
