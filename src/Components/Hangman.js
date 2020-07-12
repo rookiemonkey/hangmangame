@@ -97,7 +97,10 @@ class Hangman extends Component {
 
           <div>SCORE: {this.state.score}</div>
 
-          {winner ? <ButtonPlayAgain setNewGame={this.setNewGame} /> : <Meta maxWrong={mWrong} numWrong={nWrong} setNewGame={this.setNewGame} />}
+          {winner
+            ? <ButtonPlayAgain setNewGame={this.setNewGame} />
+            : <Meta maxWrong={mWrong} numWrong={nWrong} setNewGame={this.setNewGame} />
+          }
 
           <p
             className='Hangman-word'
