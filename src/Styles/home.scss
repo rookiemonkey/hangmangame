@@ -1,0 +1,23 @@
+.Home-container {
+    width: fit-content;
+    color: black;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    zoom: 1.3;
+    
+    .Home-heading-container {
+        img {
+            border: 10px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.27),
+                        0 0 40px rgba(0, 0, 0, 0.06) inset;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 100;
+            margin-bottom: 0.1em;
+            margin-top: 0;
+        }
+    }
+}
