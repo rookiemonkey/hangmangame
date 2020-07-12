@@ -71,7 +71,7 @@ class Hangman extends Component {
 
   render() {
 
-    const { nWrong, answer, mWrong, winner, definition, end, score, isLoaded } = this.state;
+    const { nWrong, answer, mWrong, winner, definition, end, score } = this.state;
     const { images, maxWrong, restartGame } = this.props;
 
     return (
@@ -85,9 +85,15 @@ class Hangman extends Component {
         <div style={{ width: '500px' }}>
           <Hints definition={definition} />
 
-          {end ? <Submit score={score} restartGame={restartGame} /> : null}
+          {end
+            ? <Submit score={score} restartGame={restartGame} />
+            : null
+          }
 
-          {winner ? <h2>Correct!</h2> : null}
+          {winner
+            ? <h2>Correct!</h2>
+            : null
+          }
 
           <div>SCORE: {this.state.score}</div>
 
