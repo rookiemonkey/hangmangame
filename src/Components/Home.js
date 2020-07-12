@@ -29,7 +29,7 @@ class Home extends Component {
                     </p>
 
                     <p>
-                        Each time you get a correct answer, You will get 1pt. else, you'll get only the correct answer. However, you can still proceed to the next word as long as you want.
+                        Each time you get a correct answer, You will get 1pt. else, hangman will be drawn and you'll get only the correct answer upon losing your last heart. However, you can still proceed to the next word as long as you want.
                     </p>
 
                     <p>
@@ -41,6 +41,7 @@ class Home extends Component {
                     >Start</button>
 
                     <button
+                        onClick={() => { alert('Coming soon') }}
                     >High Scores</button>
 
                 </div>
