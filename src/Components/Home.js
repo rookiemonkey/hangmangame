@@ -43,6 +43,7 @@ class Home extends Component {
                     <button
                         onClick={() => { alert('Coming soon') }}
                     >High Scores</button>
+                    {/* API:  /hangman/score/highscores */}
 
                 </div>
 

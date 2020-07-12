@@ -19,11 +19,17 @@ class Submit extends Component {
 
     handleSubmit = e => {
 
-        // post request to high scores api
-
-        this.setState({ score: 0, name: '' }, () => {
-            this.props.restartGame()
+        // post request to high scores api not yet deployed
+        // /hangman/postscore/:name/:score
+        fetch(`/hangman/postscore/${this.state.name}/${this.state.score}`, {
+            method: 'POST'
         })
+            .then(() => {
+                this.setState({ score: 0, name: '' }, () => {
+                    this.props.restartGame()
+                })
+            })
+            .catch(e => { console.error('Error upon submitting score: ', e) })
     }
 
     render() {
