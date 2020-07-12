@@ -27,7 +27,7 @@ class Hangman extends Component {
       answer: "",
       definition: {},
       winner: false,
-      end: true,
+      end: false,
       score: 0
     };
   };
