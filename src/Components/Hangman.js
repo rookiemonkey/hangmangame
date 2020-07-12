@@ -21,6 +21,7 @@ class Hangman extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoaded: false,
       mWrong: this.props.maxWrong,
       nWrong: 0,
       guessed: new Set(),
@@ -48,7 +49,10 @@ class Hangman extends Component {
   /**
     generateButtons: return array of letter buttons to render
   */
-  generateButtons = () => { return Buttons(this); };
+  generateButtons = () => {
+    if (this.state.isLoaded) { return Buttons(this) }
+    else { return ButtonsDisabled(this) }
+  };
 
   /**
     evaluateAnswer: checks the asnwer if letters and no _ anymore
@@ -67,7 +71,7 @@ class Hangman extends Component {
 
   render() {
 
-    const { nWrong, answer, mWrong, winner, definition, end, score } = this.state;
+    const { nWrong, answer, mWrong, winner, definition, end, score, isLoaded } = this.state;
     const { images, maxWrong, restartGame } = this.props;
 
     return (
@@ -86,11 +90,18 @@ class Hangman extends Component {
           {winner ? <h2>Correct!</h2> : null}
 
           <div>SCORE: {this.state.score}</div>
+
           {winner ? <ButtonPlayAgain setNewGame={this.setNewGame} /> : <Meta maxWrong={mWrong} numWrong={nWrong} setNewGame={this.setNewGame} />}
 
-          <p className='Hangman-word' id='Hangman-word'>{nWrong === maxWrong ? answer : this.guessedWord()}</p>
+          <p
+            className='Hangman-word'
+            id='Hangman-word'
+          >{nWrong === maxWrong ? answer : this.guessedWord()}</p>
 
-          <p className='Hangman-btns' id='Hangman-btns'>{nWrong === maxWrong || winner ? this.setGameOver() : this.generateButtons()}</p>
+          <p
+            className='Hangman-btns'
+            id='Hangman-btns'
+          >{nWrong === maxWrong || winner ? this.setGameOver() : this.generateButtons()}</p>
         </div>
 
       </div>

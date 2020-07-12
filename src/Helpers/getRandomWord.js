@@ -5,7 +5,7 @@ const getRandomWord = obj => {
         .then(res => { return res.json() })
         .then(async word => {
             const definition = await getDefinition(word[0])
-            return obj.setState({ ...obj.state, answer: word[0], definition: definition });
+            return obj.setState({ ...obj.state, answer: word[0], definition: definition, isLoaded: true });
         })
         .catch(err => { alert("Error upon loading a word. Please see console"); console.error(err); });
 }
