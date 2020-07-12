@@ -13,6 +13,10 @@ class App extends Component {
     this.setState({ start: true })
   }
 
+  restartGame = () => {
+    this.setState({ start: false })
+  }
+
   render() {
     return (
       <div className="App">
@@ -24,7 +28,9 @@ class App extends Component {
         />
 
         {
-          this.state.start ? <Hangman /> : <Home start={this.startGame} />
+          this.state.start
+            ? <Hangman restartGame={this.restartGame} />
+            : <Home start={this.startGame} />
         }
 
       </div>

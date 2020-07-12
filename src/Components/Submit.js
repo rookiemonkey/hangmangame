@@ -18,7 +18,12 @@ class Submit extends Component {
     }
 
     handleSubmit = e => {
-        alert('submitted')
+
+        // post request to high scores api
+
+        this.setState({ score: 0, name: '' }, () => {
+            this.props.restartGame()
+        })
     }
 
     render() {
