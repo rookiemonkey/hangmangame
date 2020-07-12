@@ -5,7 +5,7 @@ const handlePlayAgain = obj => {
         .then(res => { return res.json() })
         .then(async word => {
             const definition = await getDefinition(word[0])
-            return obj.setState({ nWrong: 0, guessed: new Set(), answer: word[0], definition: definition, winner: false });
+            return obj.setState({ nWrong: 0, guessed: new Set(), answer: word[0], definition: definition, winner: false, isLoaded: true });
         })
         .catch(err => { alert("Error upon loading a word. Please see console"); console.error(err); });
 }

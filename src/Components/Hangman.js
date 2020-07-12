@@ -67,7 +67,11 @@ class Hangman extends Component {
   /**
     setNewGame: resets the whole state of the application
   */
-  setNewGame = () => { this.setState(handlePlayAgain(this)) }
+  setNewGame = () => {
+    this.setState({ ...this.state, isLoaded: false }, () => {
+      this.setState(handlePlayAgain(this))
+    })
+  }
 
   render() {
 
