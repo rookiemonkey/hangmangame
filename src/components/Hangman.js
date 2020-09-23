@@ -5,12 +5,12 @@ import Buttons from './Buttons';
 import ButtonPlayAgain from './ButtonPlayAgain';
 import ButtonsDisabled from './ButtonsDisabled';
 import Meta from './Meta';
-import getRandomWord from '../Helpers/getRandomWord';
-import getHangmanImages from '../Helpers/getHangmanImages';
-import handlePlayAgain from '../Helpers/handlePlayAgain';
-import handleGuessedWord from '../Helpers/handleGuessedWord';
-import handleOnClick from '../Helpers/handleOnClick';
-import handleEvaluation from '../Helpers/handleEvaluation';
+import getRandomWord from '../helpers/getRandomWord';
+import getHangmanImages from '../helpers/getHangmanImages';
+import handlePlayAgain from '../helpers/handlePlayAgain';
+import handleGuessedWord from '../helpers/handleGuessedWord';
+import handleOnClick from '../helpers/handleOnClick';
+import handleEvaluation from '../helpers/handleEvaluation';
 
 class Hangman extends Component {
   static defaultProps = {

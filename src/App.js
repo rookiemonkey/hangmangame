@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactHowler from 'react-howler'
-import Home from './Components/Home';
-import Hangman from "./Components/Hangman";
+import Home from './components/Home';
+import Hangman from "./components/Hangman";
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class App extends Component {
       <div className="App">
 
         <ReactHowler
-          src={require('./Audio/audio.mp3')}
+          src={require('./assets/audio/audio.mp3')}
           playing={true}
           loop={true}
         />

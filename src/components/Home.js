@@ -12,7 +12,7 @@ class Home extends Component {
 
                 <div className="Home-heading-container">
                     <h1>Hangman</h1>
-                    <img src={require('../Images/6.jpg')} alt="Hangman" />
+                    <img src={require('../assets/images/6.jpg')} alt="Hangman" />
                 </div>
 
                 <div style={{ width: '500px' }}>
