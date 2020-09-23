@@ -15,7 +15,7 @@ class Home extends Component {
                     <img src={require('../assets/images/6.jpg')} alt="Hangman" />
                 </div>
 
-                <div style={{ width: '500px' }}>
+                <div className="Home-heading-container-text">
 
                     <p>
                         Hangman is a paper and pencil guessing game for two or more players. One player thinks of a word, phrase or sentence and the other(s) tries to guess it by suggesting letters within a certain number of guesses. - Wikipedia

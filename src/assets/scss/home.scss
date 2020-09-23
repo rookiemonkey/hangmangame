@@ -20,4 +20,22 @@
             margin-top: 0;
         }
     }
+
+    .Home-heading-container-text {
+        max-width: 500px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 850px) {
+
+    .Home-container  {
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    .Home-heading-container {
+        display: none;
+    }
+
 }
