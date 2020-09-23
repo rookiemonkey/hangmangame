@@ -81,12 +81,12 @@ class Hangman extends Component {
     return (
       <div className='Hangman'>
 
-        <div>
+        <div className='Hangman-image'>
           <h1>Hangman</h1>
           <img src={images[nWrong]} alt="Hangman" />
         </div>
 
-        <div style={{ width: '500px' }}>
+        <div className='Hangman-navigation'>
           <Hints definition={definition} isLoaded={isLoaded} />
 
           {end

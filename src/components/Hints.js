@@ -11,7 +11,7 @@ const Hints = props => {
     if (!props.isLoaded) {
         return (
 
-            <div>
+            <div className="hints-container">
                 <p>Please wait while we generate a random word for you to guess</p>
 
                 <div className="loader" title="2">
@@ -36,7 +36,7 @@ const Hints = props => {
     else if (!partOfSpeech && !definition) {
         return (
 
-            <div>
+            <div className="hints-container">
                 <p>We apologize. Our sources do not have any available definition for this one</p>
             </div>
 
@@ -47,7 +47,7 @@ const Hints = props => {
 
         return (
 
-            <div>
+            <div className="hints-container">
                 <h5>Hints:</h5>
                 <ul>
                     <li key={shortid.generate()}>{partOfSpeech}</li>
